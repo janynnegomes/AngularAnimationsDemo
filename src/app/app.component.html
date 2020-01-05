@@ -1,10 +1,42 @@
-<h1>App</h1>
-<nav class='nav'>
-  <a routerLink="/auth/login" routerLinkActive="active">Login</a>
-  <a routerLink="/auth/token" routerLinkActive="active">Token</a>
-  <a routerLink="/auth/accounts" routerLinkActive="active">Accounts</a>
-</nav>
-
-<div [@routeAnimations]="prepareRoute(outlet)" class='card'>
-  <router-outlet #outlet="outlet"></router-outlet>
+<header class='text-center'> 
+  <div class="jumbotron bg-primary rounded-0 mb-0">
+    <h1 class="display-4 text-light">Animations Demo</h1>
+    <p class="lead text-light">A project using Angular Animations to make transitions in lazyload architecture</p>
+    
+  </div>
+</header>
+<div class="container-fluid m-0 p-0">
+  <div class="row m-0 p-0">
+    <div class="col-md-3 m-0 p-0">
+        <ul class="list-group nav-pages">
+            <li class="list-group-item rounded-0"  routerLink="/page/home" routerLinkActive="active">Home</li>
+            <li class="list-group-item" routerLink="/page/authentication" routerLinkActive="active">Authentication</li>
+            <li class="list-group-item" routerLink="/page/404" routerLinkActive="active">404 </li>
+            <li class="list-group-item" routerLink="/page/search" routerLinkActive="active">Search </li>
+            <li class="list-group-item rounded-0" routerLink="/page/masterdetail" routerLinkActive="active">Master/Detail </li>
+          </ul>      
+    </div>
+    <div class="col-md-9 m-0 p-0">
+      <div [@routeAnimations]="prepareRoute(outlet)" >
+        <router-outlet #outlet="outlet"></router-outlet>
+      </div>
+    </div>
+  </div>  
 </div>
+<footer class="bg-light container-fluid pt-5">
+  <div class="row">
+    <div class="col">
+      <h3>About</h3>
+      <p>{{aboutText}} </p>
+    </div>
+    <div class="col">
+        <h3>Social</h3>
+        <p><a href="https://github.com/janynnegomes" target="_blank">Github:: janynnegomes</a></p>
+      </div>
+  </div>
+  <div class="copyright row bg-dark text-white text-center p-3">
+   <div class="col">
+      Developed by @janynnegomes
+   </div> 
+  </div>
+</footer>

@@ -1,0 +1,12 @@
+<page [title]="title" [subtitle]="subtitle">
+    <p>This is a 3 steps scenarios for authentication, using components representing every step of the authorization process.</p>
+    <p>This demo uses route transitions, catching the current and previous route trough Angular Animations.</p>
+    <nav class='nav'>
+        <a routerLink="/auth/login" routerLinkActive="active">Login</a>
+        <a routerLink="/auth/token" routerLinkActive="active">Token</a>
+        <a routerLink="/auth/accounts" routerLinkActive="active">Accounts</a>
+    </nav>  
+    <div [@routeAnimations]="prepareAuthRoute(outlet1)" >
+            <router-outlet #outlet1="outlet" name="authOutlet"> </router-outlet>
+    </div>
+</page>  

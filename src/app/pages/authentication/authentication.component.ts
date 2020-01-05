@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import {
   trigger,
   state,
@@ -11,42 +12,12 @@ import {
   keyframes
   // ...
 } from '@angular/animations';
-import { RouterOutlet } from '@angular/router';
-import {fadeInOut, slideRight, slideLeft} from './animations';
-
+import {fadeInOut, slideRight, slideLeft} from '../../animations';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass'],
+  selector: 'app-authentication',
+  templateUrl: './authentication.component.html',
+  styleUrls: ['./authentication.component.sass'],
   animations:[
-    trigger('openClose', [ 
-      state('open', style({
-        height: '200px',
-        opacity: 1,
-        backgroundColor: 'yellow'
-      })),
-      state('closed', style({
-        height: '100px',
-        opacity: 0.5,
-        backgroundColor: 'green'
-      })),
-      transition('open => closed', [
-        animate('1s')
-      ]),
-      transition('closed => open', [
-        animate('0.5s')
-      ]),
-    ]),
-    trigger('flynIn', [
-      state('in', style({ transform: 'translateX(0)' })),
-      transition(':enter', [
-        style({ transform: 'translateX(-100%)' }),
-        animate(100)
-      ]),
-      transition(':leave', [
-        animate(100, style({ transform: 'translateX(100%)' }))
-      ])
-    ]),
     trigger('routeAnimations', [
       // // Definição dos estados finais de cada componente
       // state('login',style({backgroundColor:'orange'})),
@@ -72,14 +43,19 @@ import {fadeInOut, slideRight, slideLeft} from './animations';
     ])
   ]
 })
-export class AppComponent {
-  title = 'AnimationsDemo';
-  page:string;
-  aboutText:string ='Demo project built with Angular 8 to be used as reference for projects and components structures using animations.';
+export class AuthenticationComponent implements OnInit {
 
-  prepareRoute(outlet: RouterOutlet) {
+  title:string = "Authentication";
+  subtitle:string = "Slide transition efect";
+  content:string = "This example shows 3 steps auth, with slide transition between the routes";
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+  prepareAuthRoute(outlet: RouterOutlet) {
     console.dir(outlet.activatedRouteData['animation']);
-    this.page = outlet.activatedRouteData['animation'];
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
+
 }
